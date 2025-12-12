@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const prerender = require('./lib');
-const s3Cache = require('prerender-aws-s3-cache');
 
 const server = prerender({
     chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage'],
@@ -15,6 +14,6 @@ server.use(prerender.browserForceRestart());
 server.use(prerender.addMetaTags());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
-server.use(s3Cache);
+server.use(prerender.s3Cache());
 
 server.start();
