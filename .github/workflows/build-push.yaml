@@ -39,4 +39,4 @@ jobs:
         with:
           platforms: linux/arm64,linux/amd64
           push: true
-          tagas: quay.io/activeloop/prerender:latest,quay.io/activeloop/prerender:alpine
+          tags: quay.io/activeloop/prerender:latest,quay.io/activeloop/prerender:alpine
