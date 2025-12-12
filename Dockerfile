@@ -18,6 +18,7 @@ RUN npm install --no-package-lock \
   && npm cache clean --force \
   && rm -rf /var/cache/apk/* /tmp/*
 
+COPY ./lib/ ./lib/
 EXPOSE 3000
 
 ENTRYPOINT ["tini", "--"]
