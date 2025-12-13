@@ -12,6 +12,10 @@ const server = prerender({
 });
 
 
+if (process.env.AUTH_TOKEN) {
+  util.log("EnabledPlugin: tokenAuth")
+  server.use(prerender.tokenAuth()); 
+}
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.browserForceRestart());
 // server.use(prerender.blockResources());
@@ -22,11 +26,6 @@ server.use(prerender.httpHeaders());
 if (process.env.S3_BUCKET_NAME) {
   util.log("EnabledPlugin: s3Cache")
   server.use(prerender.s3Cache());
-}
-
-if (process.env.AUTH_TOKEN) {
-  util.log("EnabledPlugin: tokenAuth")
-  server.use(prerender.tokenAuth()); 
 }
 
 server.start();
