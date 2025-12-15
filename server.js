@@ -6,15 +6,15 @@ const browserLocation = process.env.BROWSER || '/usr/bin/chromium-browser';
 util.log(`browserLocation: ${browserLocation}`)
 
 const server = prerender({
-    chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage'],
-    forwardHeaders: true,
-    chromeLocation: browserLocation
+  chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage'],
+  forwardHeaders: true,
+  chromeLocation: browserLocation
 });
 
 
 if (process.env.AUTH_TOKEN) {
   util.log("EnabledPlugin: tokenAuth")
-  server.use(prerender.tokenAuth()); 
+  server.use(prerender.tokenAuth());
 }
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.browserForceRestart());
